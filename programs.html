@@ -1,0 +1,1521 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Power University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #f9f9f9;
+            padding-top: 80px; /* For fixed header */
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+            padding: 10px 0;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            width: 200px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-color);
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--light-color);
+            color: var(--secondary-color);
+            padding-left: 25px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        /* Programs Page Styles */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease;
+        }
+
+        .department-section {
+            margin: 60px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .department-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .department-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .department-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .department-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .programs-table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+            margin-bottom: 30px;
+        }
+
+        .programs-table th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .programs-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .programs-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .programs-table tr {
+            transition: all 0.3s ease;
+        }
+
+        .programs-table tr:hover {
+            background-color: #f5f5f5;
+            transform: translateX(5px);
+        }
+
+        .program-name {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .program-duration {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .specializations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .specialization-tag {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* .apply-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        } */
+
+
+        td.right-align {
+    text-align: right;
+}
+
+.apply-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+
+
+
+
+
+
+        .apply-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            color: white;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding-top: 60px;
+            margin: 0;
+            width: 100%;
+        }
+
+        .footer-main {
+            width: 100%;
+        }
+
+        .footer-main .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p {
+            margin-bottom: 15px;
+            color: #bbb;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+            text-align: center;
+            color: #bbb;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .footer-bottom .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                padding: 15px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                margin-top: 10px;
+                padding-left: 20px;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .programs-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .department-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .department-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+        <!-- Header -->
+        <header>
+            <div class="container header-container">
+                <div class="logo">
+                    <a href="index.html"><img src="images/mind-power-university-logo.png" alt="College Logo"> </a>
+                    <!-- <div class="logo-text">
+                        <h1>Mahatma Gandhi College</h1>
+                        <p>of Education</p>
+                    </div> -->
+                </div>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li class="dropdown">
+                            <a href="programs.html">Our Programs </a>
+                            <!-- <div class="dropdown-content">
+                                <div class="dropdown-group">
+                                    <strong>Engineering</strong>
+                                    <a href="btech-cs.html">B.Tech Computer Science</a>
+                                    <a href="electrical-engg.html">Electrical Engineering</a>
+                                    <a href="mechanical-engg.html">Mechanical Engineering</a>
+                                </div>
+                                <div class="dropdown-group">
+                                    <strong>Management</strong>
+                                    <a href="bba.html">BBA</a>
+                                    <a href="mba.html">MBA</a>
+                                </div>
+                                <div class="dropdown-group">
+                                    <strong>Vocational</strong>
+                                    <a href="medical-lab-tech.html">Medical Lab Tech</a>
+                                    <a href="hospitality-mgmt.html">Hospitality Management</a>
+                                </div>
+                            </div> -->
+                        </li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="internationalLife.html">International Student Life</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </header>
+    <!-- Main Content -->
+    <main>
+      
+        <section class="hero">
+            <div class="container">
+                <h1>Our Academic Programs</h1>
+                <p>Explore world-class education with our diverse range of programs designed to empower your future</p>
+            </div>
+        </section>
+    
+        <div class="container">
+            <!-- Department of Psychology -->
+            <section class="department-section" id="psychology">
+                <div class="department-header">
+                    <!-- <div class="department-icon">🧠</div> -->
+                    <h2 class="department-title"> Department of 
+                        Engineering Technology</h2>
+                </div>
+                
+                <table class="programs-table">
+                    <thead>
+                        <tr>
+                            <th>Program</th>
+                            <th>Duration</th>
+                            <th>Specializations</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="program-name">Bachelor of Technology (B.Tech.)</div>
+                                
+                            </td>
+                            <td>4 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">AI & ML - IBM  </span>
+                                    <span class="specialization-tag">Computer Science Engg. (CSE)  </span>
+                                    <span class="specialization-tag">Cyber security & Forensic Science</span>
+                                    <span class="specialization-tag">Aerospace With Drone Technology</span>
+                                    <span class="specialization-tag">DataScience & Cloud Coumputing</span>
+                                    <span class="specialization-tag">Mechanical Engg.  </span>
+                                    <span class="specialization-tag"> Electronics & Communication</span>
+                                    <span class="specialization-tag">Mechanical Engg.- EV</span>
+                                   
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="program-name">Master of Technology(M.Tech.)</div>
+                                
+                            </td>
+                            <td>2 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">Computer Science Engg. (CSE) </span>
+                                    <span class="specialization-tag">Mechanical </span>
+                                    <span class="specialization-tag">Electronics & Communication </span>
+                                    <span class="specialization-tag">Civil </span>
+                                    <span class="specialization-tag">Aerospace With Drone Technology</span>
+                                </div>
+                            </td>
+                            <td><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="program-name">Diploma Program</div>
+                              
+                            </td>
+                            <td>3 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">AI & ML - IBM  </span>
+                                    <span class="specialization-tag">Computer Science Engg. (CSE)  </span>
+                                    <span class="specialization-tag">Cyber security & Forensic Science</span>
+                                    <span class="specialization-tag">Aerospace With Drone Technology</span>
+                                    <span class="specialization-tag">DataScience & Cloud Coumputing</span>
+                                    <span class="specialization-tag">Mechanical Engg.  </span>
+                                    <span class="specialization-tag"> Electronics & Communication</span>
+                                    <span class="specialization-tag">Mechanical Engg.- EV</span>
+                                </div>
+                            </td>
+                            <td><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+    
+            <!-- Department of Mind Sciences -->
+            <section class="department-section" id="mind-sciences">
+                <div class="department-header">
+                    <!-- <div class="department-icon">🔮</div> -->
+                    <h2 class="department-title"> Department of 
+                        Commerce & 
+                        Management Studies</h2>
+                </div>
+                
+                <table class="programs-table">
+                    <thead>
+                        <tr>
+                            <th>Program</th>
+                            <th>Duration</th>
+                            <th>Specializations</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="program-name">Bachelor of Business Administration(BBA)</div>
+                                <!-- <div class="program-duration">Undergraduate Degree</div> -->
+                            </td>
+                            <td>4 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">BBA</span>
+                              
+                                </div>
+                            </td>
+                            <td><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="program-name">Bachelor Of Commerce (B.Com)</div>
+                                <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                            </td>
+                            <td>2 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">B.COM</span>
+                                   
+                                </div>
+                            </td>
+                            <td><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="program-name">Master of Business Administration (MBA)</div>
+                             
+                            </td>
+                            <td>2 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">Marketing Finance</span>
+                                    <span class="specialization-tag">Human Resources</span>
+                                    <span class="specialization-tag">Business Analytics</span>
+                                    <span class="specialization-tag">Operation Management</span>
+                                </div>
+                            </td>
+                            <td><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="program-name">Master of Commerce (M.Com)</div>
+                             
+                            </td>
+                            <td>2 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">M.Com</span>
+                                   
+                                </div>
+                            </td>
+                            <td><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="program-name">Integrated BBA+MBA</div>
+                             
+                            </td>
+                            <td>4 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">BBA+MBA</span>
+                                   
+                                </div>
+                            </td>
+                            <td><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+
+              <!-- Department of Computer Science & Application  -->
+              <section class="department-section" id="mind-sciences">
+                <div class="department-header">
+                    <!-- <div class="department-icon">🔮</div> -->
+                    <h2 class="department-title"> Department of Computer Science & Application </h2>
+                    
+                      
+                </div>
+                
+                <table class="programs-table">
+                    <thead>
+                        <tr>
+                            <th>Program</th>
+                            <th>Duration</th>
+                            <th>Specializations</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="program-name">Bachelor of Computer Application(BCA)</div>
+                                <!-- <div class="program-duration">Undergraduate Degree</div> -->
+                            </td>
+                            <td>3 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">BCA</span>
+                              
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="program-name">Master of Computer Application (MCA)</div>
+                                <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                            </td>
+                            <td>2 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">MCA (AI & DS)</span>
+                                   
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="program-name">Bachelor of Science (B.Sc)</div>
+                                <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                            </td>
+                            <td>3 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">B.Sc (Computer Science)</span>
+                                   
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+                    
+                       
+                    </tbody>
+                </table>
+            </section>
+
+
+            <!--  Department of Pharmaceutical Sciences   -->
+            <section class="department-section" id="mind-sciences">
+                <div class="department-header">
+                    <!-- <div class="department-icon">🔮</div> -->
+                    <h2 class="department-title">  Department of  Pharmaceutical  Sciences </h2>
+                    
+                      
+                </div>
+                
+                <table class="programs-table">
+                    <thead>
+                        <tr>
+                            <th>Program</th>
+                            <th>Duration</th>
+                            <th>Specializations</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="program-name">Bachelor of Pharmaceutical </div>
+                                <!-- <div class="program-duration">Undergraduate Degree</div> -->
+                            </td>
+                            <td>4 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">B.Pharmacy </span>
+                              
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="program-name">Diploma in Pharmaceutical </div>
+                                <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                            </td>
+                            <td>2 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">D.Pharmacy </span>
+                                   
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+
+                        
+                    
+                       
+                    </tbody>
+                </table>
+            </section>
+
+
+             <!--  Department of Hospitality Management -->
+             <section class="department-section" id="mind-sciences">
+                <div class="department-header">
+                    <!-- <div class="department-icon">🔮</div> -->
+                    <h2 class="department-title"> Department of Hospitality Management  </h2>
+                    
+                      
+                </div>
+                
+                <table class="programs-table">
+                    <thead>
+                        <tr>
+                            <th>Program</th>
+                            <th>Duration</th>
+                            <th>Specializations</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="program-name">Bachelor of Hotel Management </div>
+                                <!-- <div class="program-duration">Undergraduate Degree</div> -->
+                            </td>
+                            <td>4 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">B.H.M </span>
+                              
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="program-name">Diploma in Hotel Management </div>
+                                <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                            </td>
+                            <td>2 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">D.H.M </span>
+                                   
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="program-name">Bachelor of Science </div>
+                                <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                            </td>
+                            <td>2 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">B.Sc(HM)</span>
+                                   
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+
+                        
+                    
+                       
+                    </tbody>
+                </table>
+            </section>
+
+
+
+             <!--  Department of Skill Development and Vocation al Studies  -->
+             <section class="department-section" id="mind-sciences">
+                <div class="department-header">
+                    <!-- <div class="department-icon">🔮</div> -->
+                    <h2 class="department-title"> Department of Skill Development and  Vocational Studies  </h2>
+                    
+                      
+                </div>
+                
+                <table class="programs-table">
+                    <thead>
+                        <tr>
+                            <th>Program</th>
+                            <th>Duration</th>
+                            <th>Specializations</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="program-name">Bachelor of Vocational (B.Voc.)</div>
+                                <!-- <div class="program-duration">Undergraduate Degree</div> -->
+                            </td>
+                            <td>3 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">MLT </span>
+                                    <span class="specialization-tag">Physiotherapy</span>
+                                    <span class="specialization-tag"> PCM </span>
+                                    <span class="specialization-tag"> Radiology & MLT </span>
+                                    <span class="specialization-tag">  Hotel Management</span>
+                                    <span class="specialization-tag"> Tourisam & Hospitality management</span>
+                                    <span class="specialization-tag"> Health information management</span>
+                                    <span class="specialization-tag"> Naturopathy & yoga</span>
+                                    
+
+                                    
+
+                              
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="program-name">Diploma in Vocational (D.Voc.) </div>
+                                <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                            </td>
+                            <td>2 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">Health information management </span>
+
+                                   
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="program-name">Master of Vocational(M.Voc.) </div>
+                                <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                            </td>
+                            <td>2 Years</td>
+                            <td>
+                                <div class="specializations">
+                                    <span class="specialization-tag">Health information management</span>
+                                    <span class="specialization-tag">Hotel Management</span>
+                                    <span class="specialization-tag">Hospital Managemet</span>
+                                   
+                                </div>
+                            </td>
+                            <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                        </tr>
+
+                        
+                    
+                       
+                    </tbody>
+                </table>
+            </section>
+
+
+
+                 <!--  Department of Yogic Science and Naturopathy -->
+                 <section class="department-section" id="mind-sciences">
+                    <div class="department-header">
+                        <!-- <div class="department-icon">🔮</div> -->
+                        <h2 class="department-title"> Department of Yogic Science and Naturopathy  </h2>
+                        
+                          
+                    </div>
+                    
+                    <table class="programs-table">
+                        <thead>
+                            <tr>
+                                <th>Program</th>
+                                <th>Duration</th>
+                                <th>Specializations</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="program-name">Bachelor of Science </div>
+                                    <!-- <div class="program-duration">Undergraduate Degree</div> -->
+                                </td>
+                                <td>4 Years</td>
+                                <td>
+                                    <div class="specializations">
+                                        <span class="specialization-tag">B.N.Y.S. </span>
+                                        <span class="specialization-tag">Yoga & Naturopathy  </span>
+                                  
+                                    </div>
+                                </td>
+                                <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <div class="program-name">Master of Science </div>
+                                    <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                                </td>
+                                <td>2 Years</td>
+                                <td>
+                                    <div class="specializations">
+                                        <span class="specialization-tag">Yogic Science & Therapy </span>
+                                       
+                                    </div>
+                                </td>
+                                <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                            </tr>
+    
+                            
+                        
+                           
+                        </tbody>
+                    </table>
+                </section>
+
+
+                 <!--  Department of Department of Agriculture  -->
+                 <section class="department-section" id="mind-sciences">
+                    <div class="department-header">
+                        <!-- <div class="department-icon">🔮</div> -->
+                        <h2 class="department-title"> Department of Agriculture  </h2>
+                        
+                          
+                    </div>
+                    
+                    <table class="programs-table">
+                        <thead>
+                            <tr>
+                                <th>Program</th>
+                                <th>Duration</th>
+                                <th>Specializations</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="program-name">Bachelor of Science </div>
+                                    <!-- <div class="program-duration">Undergraduate Degree</div> -->
+                                </td>
+                                <td>4 Years</td>
+                                <td>
+                                    <div class="specializations">
+                                        <span class="specialization-tag">Agriculture </span>
+                                       
+                                  
+                                    </div>
+                                </td>
+                                <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <div class="program-name">Master of Science (Ag)</div>
+                                    <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                                </td>
+                                <td>2 Years</td>
+                                <td>
+                                    <div class="specializations">
+                                        <span class="specialization-tag">Agronomy</span>
+                                       
+                                    </div>
+                                </td>
+                                <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                            </tr>
+    
+                            
+                        
+                           
+                        </tbody>
+                    </table>
+                </section>
+
+
+
+                  <!--  Department of Social Sciences and Humanities  -->
+                  <section class="department-section" id="mind-sciences">
+                    <div class="department-header">
+                        <!-- <div class="department-icon">🔮</div> -->
+                        <h2 class="department-title"> Department of Social Sciences and Humanities   </h2>
+                        
+                          
+                    </div>
+                    
+                    <table class="programs-table">
+                        <thead>
+                            <tr>
+                                <th>Program</th>
+                                <th>Duration</th>
+                                <th>Specializations</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="program-name">Bachelor</div>
+                                    <!-- <div class="program-duration">Undergraduate Degree</div> -->
+                                </td>
+                                <td>3 Years</td>
+                                <td>
+                                    <div class="specializations">
+                                        <span class="specialization-tag">B.A</span>
+                                       
+                                  
+                                    </div>
+                                </td>
+                                <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <div class="program-name">Master</div>
+                                    <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                                </td>
+                                <td>2 Years</td>
+                                <td>
+                                    <div class="specializations">
+                                        <span class="specialization-tag">M.A(Applied Art)</span>
+                                        <span class="specialization-tag">M.A(Sociology)</span>
+                                        <span class="specialization-tag">M.A(English)</span>
+                                        <span class="specialization-tag">M.A(Home Science)</span>
+                                        <span class="specialization-tag">M.A(Economics)</span>
+                                        <span class="specialization-tag">M.A(Hindi)</span>
+                                        <span class="specialization-tag">M.A(General)</span>
+                                        <span class="specialization-tag">MFA (Master of Fine Arts)</span>
+                                        <span class="specialization-tag">MSW(Master of Socila Work)</span>
+                                       
+                                    </div>
+                                </td>
+                                <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                            </tr>
+    
+                            
+                        
+                           
+                        </tbody>
+                    </table>
+                </section>
+
+
+                
+                  <!-- Department of Applied Sciences  -->
+                  <section class="department-section" id="mind-sciences">
+                    <div class="department-header">
+                        <!-- <div class="department-icon">🔮</div> -->
+                        <h2 class="department-title"> Department of Applied Sciences  </h2>
+                        
+                          
+                    </div>
+                    
+                    <table class="programs-table">
+                        <thead>
+                            <tr>
+                                <th>Program</th>
+                                <th>Duration</th>
+                                <th>Specializations</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="program-name">Bachelor of Science</div>
+                                    <!-- <div class="program-duration">Undergraduate Degree</div> -->
+                                </td>
+                                <td>3 Years</td>
+                                <td>
+                                    <div class="specializations">
+                                        <span class="specialization-tag">B.Sc(Microbiology)</span>
+                                        <span class="specialization-tag">B.Sc(Biotechnology)</span>
+                                        <span class="specialization-tag">B.Sc</span>
+                                       
+                                  
+                                    </div>
+                                </td>
+                                <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <div class="program-name">Master of Science</div>
+                                    <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                                </td>
+                                <td>2 Years</td>
+                                <td>
+                                    <div class="specializations">
+                                        <span class="specialization-tag">M.Sc. Home Science</span>
+                                        <span class="specialization-tag">M.Sc. Physics</span>
+                                        <span class="specialization-tag">M.Sc. Chemistry</span>
+                                        <span class="specialization-tag">M.Sc. Botany</span>
+                                       
+                                        <span class="specialization-tag">M.Sc. Mathematics</span>
+                                        <span class="specialization-tag">M.Sc.</span>
+                                       
+                                       
+                                    </div>
+                                </td>
+                                <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                            </tr>
+    
+                            
+                        
+                           
+                        </tbody>
+                    </table>
+                </section>
+
+
+                     <!-- Department of Earth Sciences  -->
+                     <section class="department-section" id="mind-sciences">
+                        <div class="department-header">
+                            <!-- <div class="department-icon">🔮</div> -->
+                            <h2 class="department-title"> Department of Earth Sciences  </h2>
+                            
+                              
+                        </div>
+                        
+                        <table class="programs-table">
+                            <thead>
+                                <tr>
+                                    <th>Program</th>
+                                    <th>Duration</th>
+                                    <th>Specializations</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="program-name">Master</div>
+                                        <!-- <div class="program-duration">Undergraduate Degree</div> -->
+                                    </td>
+                                    <td>2 Years</td>
+                                    <td>
+                                        <div class="specializations">
+                                            <span class="specialization-tag">M.A(Geography)</span>
+                                           
+                                           
+                                      
+                                        </div>
+                                    </td>
+                                    <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="program-name">PG Diploma</div>
+                                        <!-- <dv class="program-duration">Graduate Degree</dv> -->
+                                    </td>
+                                    <td>1 Years</td>
+                                    <td>
+                                        <div class="specializations">
+                                            <span class="specialization-tag">Remote Sensing & GIS </span>
+                                         
+                                           
+                                           
+                                        </div>
+                                    </td>
+                                    <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                                </tr>
+        
+                                
+                            
+                               
+                            </tbody>
+                        </table>
+                    </section>
+
+
+                      <!-- PHD  -->
+                      <section class="department-section" id="mind-sciences">
+                        <div class="department-header">
+                            <!-- <div class="department-icon">🔮</div> -->
+                            <h2 class="department-title"> Department of PhD </h2>
+                            
+                              
+                        </div>
+                        
+                        <table class="programs-table">
+                            <thead>
+                                <tr>
+                                    <th>Program</th>
+                                    <th>Duration</th>
+                                    <th>Specializations</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="program-name">PhD</div>
+                                        <!-- <div class="program-duration">Undergraduate Degree</div> -->
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <div class="specializations">
+                                            <span class="specialization-tag">PhD</span>
+                                           
+                                           
+                                      
+                                        </div>
+                                    </td>
+                                    <td class="right-align"><a href="https://admissions.mindpoweruniversity.ac.in/" class="apply-btn">Apply Now</a></td>
+                                </tr> 
+                            
+                               
+                            </tbody>
+                        </table>
+                    </section>
+
+
+            
+
+
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>About Us</h3>
+                        <p>Mind Power University is committed to providing quality education and shaping future leaders.</p>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/MindPowerUniversityBhimtal"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://x.com/MindPowerU21510"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/mindpoweruniversitybhimtal/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/mind-power-university/"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.youtube.com/@mindpoweruniversitybhimtal"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="#">Admissions</a></li>
+                            <li><a href="#">Placements</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Programs</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">B.Tech Programs</a></li>
+                            <li><a href="#">MBA</a></li>
+                            <li><a href="#">BBA</a></li>
+                            <li><a href="#">Vocational Courses</a></li>
+                            <li><a href="#">Ph.D Programs</a></li>
+                            <li><a href="#">Certificate Courses</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Contact Us</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Bhimtal, Nainital, Uttarakhand, India - 263136</p>
+                        <p><i class="fas fa-phone"></i> +91 87006 13932</p>
+                        <p><i class="fas fa-envelope"></i> global@mindpoweruniversity.ac.in</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Mind Power University. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation trigger on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const departmentSections = document.querySelectorAll('.department-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            departmentSections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 992) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

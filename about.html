@@ -1,0 +1,1496 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+            
+        }
+        
+        nav ul li a {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+            padding: 10px 0;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            width: 200px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-color);
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--light-color);
+            color: var(--secondary-color);
+            padding-left: 25px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+
+          /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-container {
+                padding: 15px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .dropdown-content {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                display: none;
+                margin-top: 10px;
+                padding-left: 20px;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+            
+
+
+        /* Page Hero Section */
+        .page-hero {
+            height: 60vh;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(231, 76, 60, 0.8)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 80px;
+            margin-bottom: 60px;
+        }
+        
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        /* About Content Section */
+        .about-section {
+            padding: 80px 0;
+            background-color: var(--white);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            z-index: 2;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-content h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+        
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: #555;
+        }
+        
+        .values-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .values-list li {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .values-list li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            height: 500px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Milestones Section */
+        .milestones-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color), #1a2a3a);
+            color: var(--white);
+            margin-bottom: 60px;
+        }
+        
+        .milestones-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .milestone-item {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .milestone-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .milestone-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .milestone-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+
+
+
+  /* Leadership Section */
+
+.leadership-section {
+    padding: 80px 0;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.leaders-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+@media (max-width: 1024px) {
+    .leaders-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .leaders-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .leaders-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.leader-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.leader-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.leader-img {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.leader-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.leader-card:hover .leader-img img {
+    transform: scale(1.1);
+}
+
+.leader-info {
+    padding: 25px;
+}
+
+.leader-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.leader-info p {
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.leader-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.leader-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+        
+
+        
+        
+        .leader-social a:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+        
+        /* Testimonials Section */
+
+
+ .testimonials-section {
+    padding: 80px 0;
+    background-color: var(--light-color);
+    margin-bottom: 60px;
+}
+
+.testimonials-slider {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.testimonial-card {
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.author-img img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-color);
+}
+
+.author-info h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #111;
+}
+
+.author-info p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+
+
+
+
+
+         /* to here  */
+        /* .testimonials-section {
+            padding: 80px 0;
+            background-color: var(--light-color);
+            margin-bottom: 60px;
+        }
+        
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin: 0 20px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--secondary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .testimonial-text::before {
+            top: -20px;
+            left: -10px;
+        }
+        
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -10px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .author-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary-color);
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        } */
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--secondary-color), #c0392b);
+            color: var(--white);
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--white);
+            color: var(--secondary-color);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+
+
+
+
+    /* Updated Slider with Images */
+.slider-section {
+    background-color: var(--light-color);
+    padding: 60px 0;
+    overflow: hidden;
+    margin-bottom: 96px;
+}
+
+.slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.slide-track {
+    display: flex;
+    width: calc(200px * 10);
+    animation: scroll 25s linear infinite;
+}
+
+.slide {
+    height: 100px;
+    width: 200px;
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    max-height: 80px;
+    object-fit: contain;
+    /* filter: grayscale(100%); */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.slide img:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+
+
+.section-heading {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.section-heading::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: var(--secondary-color);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+
+          /* Footer */
+          footer {
+            width: 100%;
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 60px 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p {
+            margin-bottom: 15px;
+            color: #bbb;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+            text-align: center;
+            color: #bbb;
+            font-size: 14px;
+        }
+        
+        
+    
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                height: 400px;
+                order: -1;
+            }
+            
+            .milestones-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-hero {
+                height: 50vh;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .milestones-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .page-hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-section {
+                padding: 60px 20px;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+      
+        <!-- Header -->
+        <header>
+            <div class="container header-container">
+                <div class="logo">
+                    <a href="index.html"><img src="images/mind-power-university-logo.png" alt="College Logo"> </a>
+                    <!-- <div class="logo-text">
+                        <h1>Mahatma Gandhi College</h1>
+                        <p>of Education</p>
+                    </div> -->
+                </div>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li class="dropdown">
+                            <a href="programs.html">Our Programs </a>
+                            <!-- <div class="dropdown-content">
+                                <div class="dropdown-group">
+                                    <strong>Engineering</strong>
+                                    <a href="btech-cs.html">B.Tech Computer Science</a>
+                                    <a href="electrical-engg.html">Electrical Engineering</a>
+                                    <a href="mechanical-engg.html">Mechanical Engineering</a>
+                                </div>
+                                <div class="dropdown-group">
+                                    <strong>Management</strong>
+                                    <a href="bba.html">BBA</a>
+                                    <a href="mba.html">MBA</a>
+                                </div>
+                                <div class="dropdown-group">
+                                    <strong>Vocational</strong>
+                                    <a href="medical-lab-tech.html">Medical Lab Tech</a>
+                                    <a href="hospitality-mgmt.html">Hospitality Management</a>
+                                </div>
+                            </div> -->
+                        </li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="internationalLife.html">International Student Life</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </header>
+
+    <!-- About Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>About Our Institution</h1>
+            <p>Discover our rich heritage, visionary leadership, and commitment to academic excellence</p>
+        </div>
+    </section>
+
+    <!-- About Content Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Our History</h2>
+                    <p>Welcome to Mind Power University, where tradition meets innovation in the heart of nature near Nainital, India. Established by the Government of Uttarakhand, MPU offers globally-relevant, skill-based education across Engineering, Management, Pharmacy, Law, and more. Our modern, eco-friendly campus fosters academic excellence, cultural diversity, and holistic growth.</p>
+                    
+                    <p>Rooted in 5000 years of rich Indian heritage, we nurture ethical leaders with global mindsets. With world-class faculty, cutting-edge infrastructure, and a curriculum blending life skills and critical thinking, MPU is more than a university</p>
+                    
+                    <h2>Our Vision & Mission</h2>
+                    <p><strong>Vision:</strong> To be a globally recognized center of excellence in education that nurtures creative thinkers, ethical leaders, and lifelong learners who will drive positive change in society.</p>
+                    
+                    <p><strong>Mission:</strong> To provide transformative education through innovative pedagogy, cutting-edge research, and strong industry-academia collaboration that prepares students to meet global challenges and contribute meaningfully to society.</p>
+                    
+                    <h2>Our Core Values</h2>
+                    <ul class="values-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Excellence:</strong> Pursuing the highest standards in all aspects of education</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Integrity:</strong> Upholding ethical principles and academic honesty</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Innovation:</strong> Fostering creativity and embracing new ideas</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Inclusivity:</strong> Creating an environment that celebrates diversity</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Social Responsibility:</strong> Committing to the betterment of society</li>
+                    </ul>
+                </div>
+                
+                <div class="about-image">
+                    <img src="images/MPU-building-Aboutus.JPG" alt="Our Campus">
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- Milestones Section -->
+<section class="milestones-section" id="milestones">
+    <div class="container">
+        <div class="section-title">
+            <h2 style="color: var(--white)">Our Milestones</h2>
+            <p style="color: rgba(255,255,255,0.8)">Proud achievements in our journey of excellence</p>
+        </div>
+
+        <div class="milestones-grid">
+            <div class="milestone-item">
+                <div class="milestone-number" data-target="20">0+</div>
+                <div class="milestone-title">Years of Excellence</div>
+                <p>Since our establishment in 1995</p>
+            </div>
+
+            <div class="milestone-item">
+                <div class="milestone-number" data-target="50">0+</div>
+                <div class="milestone-title">Programs Offered</div>
+                <p>Across diverse disciplines</p>
+            </div>
+
+            <div class="milestone-item">
+                <div class="milestone-number" data-target="5000">0+</div>
+                <div class="milestone-title">Students Enrolled</div>
+                <p>Currently pursuing education</p>
+            </div>
+
+            <div class="milestone-item">
+                <div class="milestone-number" data-target="200">0+</div>
+                <div class="milestone-title">Faculty Members</div>
+                <p>Experts in their fields</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Leadership Section -->
+    <section class="leadership-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Leadership</h2>
+                <p>The visionary team guiding our institution</p>
+            </div>
+            
+            <div class="leaders-grid">
+                <div class="leader-card">
+                    <div class="leader-img">
+                        <img src="images/mr-sunil-yadav.png" alt="dr-sunil-yadav">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Dr. Sunil Yadav</h3>
+                        <p>CEO, Mend Solution USA</p>
+                        <p>Former Director of TCS & HCL</p>
+                        <!-- <div class="leader-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <div class="leader-card">
+                    <div class="leader-img">
+                        <img src="images/mr-ajay-kumar-lal.png" alt="ajay kumar">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Mr. Ajay Kumar Lal</h3>
+                        <p>IEM, CVC</p>
+                        <p>Former CAO at Indian Railways</p>
+                        <!-- <div class="leader-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div> -->
+                    </div>
+                </div>
+
+
+               
+                <div class="leader-card">
+                    <div class="leader-img">
+                        <img src="images/ms-neema-jain.png" alt="ms neema jain">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Ms. Neema Jain</h3>
+                        <p>HR Head - Reliance Retail</p>
+                        <p>Former TL - HCL Education</p>
+                        <!-- <div class="leader-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div> -->
+                    </div>
+                </div>
+              
+
+
+                
+                <div class="leader-card">
+                    <div class="leader-img">
+                        <img src="images/mr-pandikumar-gandhi.png" alt="mr-pandikumar-gandhi">
+                    </div>
+                    <div class="leader-info">
+                        <h3>Mr. PandiKumar Gandhi</h3>
+                        <p>Former Director Accenture</p>
+                        <p>Former TS at Polaris</p>
+                        <!-- <div class="leader-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials Section -->
+<section class="testimonials-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>What People Say</h2>
+            <p>Testimonials from our community</p>
+        </div>
+
+        <div class="swiper testimonials-slider">
+            <div class="swiper-wrapper">
+                <!-- Card 1 -->
+                <!-- <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            Mind Power University transformed my life with its dedicated faculty and world-class facilities, offering an ideal environment for both academic and personal growth.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Alumni">
+                            </div>
+                            <div class="author-info">
+                                <h4>Priya Sharma</h4>
+                                <p>B.Tech CSE| Software Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Card 2 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            MPU gave me practical exposure and hands-on projects that helped me get placed at Amazon right after graduation.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Alumni">
+                            </div>
+                            <div class="author-info">
+                                <h4>Aiko Tanaka</h4>
+                                <p>MBA | Amazon</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- sliding Card 3 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            The advanced labs and drone tech training gave me a head start in the aerospace industry.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Alumni">
+                            </div>
+                            <div class="author-info">
+                                <h4>Sophie Dubois </h4>
+                                <p>B.Tech Aerospace With Drone Technology| HAL</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            MPU’s faculty and industry tie-ups helped me land an internship that turned into a full-time job.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/men/25.jpg" alt="Alumni">
+                            </div>
+                            <div class="author-info">
+                                <h4>Carlos Mendoza</h4>
+                                <p>MBA, 2021 | Deloitte</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+   
+    <!-- CTA Section -->
+    <section class="container">
+        <div class="cta-section">
+            <h2>Ready to Join Our Community?</h2>
+            <p>Discover how Mind Power University can help you achieve your academic and career goals</p>
+            <a href="https://admissions.mindpoweruniversity.ac.in/" class="cta-btn">Apply Now</a>
+        </div>
+    </section>
+
+
+
+        <!-- Accreditations Slider (with Images) -->
+        <section class="slider-section">
+            <h2 class="section-heading">Accreditations, Rankings & Affiliations</h2>
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide"><img src="images/AICRA.png" alt="UGC"></div>
+                    <div class="slide"><img src="images/AICTE INDIA.png" alt="NAAC"></div>
+                    <div class="slide"><img src="images/AICTE.png" alt="NIRF"></div>
+                    <div class="slide"><img src="images/AIMA.png" alt="AICTE"></div>
+                    <div class="slide"><img src="images/AIU.png" alt="ISO"></div>
+    
+                    <!-- Repeat for infinite effect -->
+                    <div class="slide"><img src="images/ASSOCHAM.png" alt="UGC"></div>
+                    <div class="slide"><img src="images/NCTE.png" alt="NAAC"></div>
+                    <div class="slide"><img src="images/NCVT.png" alt="NIRF"></div>
+                    <div class="slide"><img src="images/NHRD.png" alt="AICTE"></div>
+                    <div class="slide"><img src="images/AIMA.png" alt="ISO"></div>
+
+                    <div class="slide"><img src="images/AICRA.png" alt="UGC"></div>
+                    <div class="slide"><img src="images/AICTE INDIA.png" alt="NAAC"></div>
+                    <div class="slide"><img src="images/AICTE.png" alt="NIRF"></div>
+                    <div class="slide"><img src="images/AIMA.png" alt="AICTE"></div>
+                    <div class="slide"><img src="images/AIU.png" alt="ISO"></div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>Mind Power University is committed to providing quality education and shaping future leaders.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/MindPowerUniversityBhimtal"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/MindPowerU21510"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/mindpoweruniversitybhimtal/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/mind-power-university/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@mindpoweruniversitybhimtal"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="internationalLife.html">International Student Life</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="btech-cs.html">B.Tech Computer Science</a></li>
+                        <li><a href="electrical-engg.html">Electrical Engineering</a></li>
+                        <li><a href="bba.html">BBA</a></li>
+                        <li><a href="mba.html">MBA</a></li>
+                        <li><a href="medical-lab-tech.html">Medical Lab Tech</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i>Bhimtal, Nainital, Uttarakhand, India -  263136</p>
+                    <p><i class="fas fa-phone"></i> +91 87006 13932</p>
+                    <p><i class="fas fa-envelope"></i> global@mindpoweruniversity.ac.in</p>
+                    <!-- <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 5:00 PM</p> -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Mahatma Gandhi College of Education. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const dropdowns = document.querySelectorAll('.dropdown');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Dropdown Toggle for Mobile - Modified to allow link clicks
+        dropdowns.forEach(dropdown => {
+            const link = dropdown.querySelector('a');
+            const dropdownContent = dropdown.querySelector('.dropdown-content');
+            
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    // If mobile and dropdown is not active, prevent default and show dropdown
+                    if (!dropdown.classList.contains('active')) {
+                        e.preventDefault();
+                        dropdown.classList.add('active');
+                    }
+                    // If mobile and dropdown is active, allow the link to work normally
+                }
+                // On desktop, allow normal behavior (hover will show dropdown)
+            });
+            
+            // Close dropdown when clicking anywhere else
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992 && !dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        });
+        
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'var(--white)';
+            }
+        });
+
+
+
+                    // Milestone animation
+
+                    document.addEventListener("DOMContentLoaded", () => {
+        const counters = document.querySelectorAll(".milestone-number");
+        let animated = false;
+
+        const animateCounters = () => {
+            if (animated) return;
+
+            const section = document.getElementById("milestones");
+            const sectionTop = section.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (sectionTop < windowHeight - 100) {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute("data-target");
+                    let count = 0;
+                    const duration = 2000;
+                    const stepTime = Math.max(10, duration / target);
+
+                    const updateCount = () => {
+                        count += Math.ceil(target / (duration / stepTime));
+                        if (count < target) {
+                            counter.textContent = `${count}+`;
+                            setTimeout(updateCount, stepTime);
+                        } else {
+                            counter.textContent = `${target}+`;
+                        }
+                    };
+
+                    updateCount();
+                });
+
+                animated = true;
+            }
+        };
+
+        window.addEventListener("scroll", animateCounters);
+        animateCounters(); // for cases when already in view
+    });
+
+
+
+        
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var swiper = new Swiper(".testimonials-slider", {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      slidesPerView: 1,
+      spaceBetween: 30,
+      breakpoints: {
+        768: {
+          slidesPerView: 2
+        },
+        1024: {
+          slidesPerView: 2
+        }
+      },
+      grabCursor: true,
+      speed: 700
+    });
+  });
+
+
+
+    
+    </script>
+    
+</body>
+</html>
