@@ -17,12 +17,11 @@
             --text-color: #333;
             --white: #fff;
         }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -179,7 +178,7 @@
         .admission-hero {
             background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
             color: white;
-            padding: 100px 0;
+            padding: 180px 20px;
             text-align: center;
             margin-bottom: 50px;
             position: relative;
@@ -203,17 +202,20 @@
             z-index: 2;
         }
 
-        .hero-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            background-image: radial-gradient(var(--accent-color) 1px, transparent 1px);
-            background-size: 20px 20px;
-            z-index: 1;
-        }
+      .hero-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1; /* increase if needed */
+    background: 
+    linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url('images/mpu-admission.jpg') no-repeat center center;
+background-size: cover;
+    background-size: cover; /* ensures full image covers the section */
+    z-index: 1;
+}
 
         .process-container {
             display: flex;
@@ -952,7 +954,7 @@
             <div class="container">
                 <h1>Begin Your Journey With Us</h1>
                 <p>Discover how to join our vibrant community of learners and innovators</p>
-                <a href="#process" class="cta-button">View Admission Process</a>
+                <!-- <a href="#process" class="cta-button">View Admission Process</a> -->
             </div>
         </section>
 
