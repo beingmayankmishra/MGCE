@@ -814,6 +814,7 @@ nav ul li a:hover::after {
 
 
 
+
         
         /* Footer */
         footer {
@@ -1385,6 +1386,11 @@ nav ul li a:hover::after {
 
 
 
+
+
+
+
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1632,6 +1638,33 @@ nav ul li a:hover::after {
         }
         
         window.addEventListener('resize', handleResize);
+
+   
+         
+
+
     </script>
+
+     <!-- Apply now code  -->
+<script>
+  fetch('apply-button.html')
+    .then(res => res.text())
+    .then(html => {
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      document.body.appendChild(div);
+
+      // Attach click event after button is added to DOM
+      const btn = div.querySelector('#applyNowBtn');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          window.location.href = "https://admissions.mindpoweruniversity.ac.in/";
+        });
+      }
+    })
+    .catch(err => console.error('Apply button load failed:', err));
+</script>
+
+
 </body>
 </html>

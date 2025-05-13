@@ -1353,7 +1353,7 @@
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-map-marker-alt"></i>Bhimtal, Nainital, Uttarakhand, India -  263136</p>
-                    <p><i class="fas fa-phone"></i> +91 87006 13932</p>
+                     <p><i class="fas fa-phone"></i> +91 8700613932 , +91 9258119490 , +91 8882822265</p>
                     <p><i class="fas fa-envelope"></i> global@mindpoweruniversity.ac.in</p>
                     <!-- <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 5:00 PM</p> -->
                 </div>
@@ -1491,6 +1491,27 @@
 
     
     </script>
+
+        <!-- Apply now code  -->
+<script>
+  fetch('apply-button.html')
+    .then(res => res.text())
+    .then(html => {
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      document.body.appendChild(div);
+
+      // Attach click event after button is added to DOM
+      const btn = div.querySelector('#applyNowBtn');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          window.location.href = "https://admissions.mindpoweruniversity.ac.in/";
+        });
+      }
+    })
+    .catch(err => console.error('Apply button load failed:', err));
+</script>
+
     
 </body>
 </html>

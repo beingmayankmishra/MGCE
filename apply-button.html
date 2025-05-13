@@ -1,0 +1,44 @@
+<!-- apply-button.html -->
+<div class="floating-apply-btn" id="applyNowBtn">
+    Apply Now
+</div>
+
+<style>
+    .floating-apply-btn {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        background-color: #ca2c1b; 
+        color: #fff;
+        padding: 20px 10px;
+        border-radius: 8px 0 0 8px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+        transition: all 0.3s ease;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
+    .floating-apply-btn:hover {
+        background-color: #a32216;
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    .floating-apply-btn:hover {
+  box-shadow: 0 6px 20px rgba(202, 44, 27, 0.4);
+}
+
+
+    @media (max-width: 768px) {
+        .floating-apply-btn {
+            padding: 15px 8px;
+            font-size: 14px;
+        }
+    }
+</style>

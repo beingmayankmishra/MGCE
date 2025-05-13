@@ -442,6 +442,30 @@
             padding: 0 15px;
         }
 
+
+ .phone-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #bbb;
+  margin-bottom: 15px;
+  flex-wrap: wrap; 
+}
+
+.phone-block i {
+  margin-top: 3px; 
+  font-size: 18px;
+  
+}
+
+.phone-block span {
+  line-height: 1.6;
+}
+
+
+
+
+
         /* Animations */
         @keyframes fadeInDown {
             from {
@@ -662,7 +686,7 @@
                                 <div class="program-name">Diploma Program</div>
                               
                             </td>
-                            <td>3 Years</td>
+                            <td> 2/3 Years</td>
                             <td>
                                 <div class="specializations">
                                     <span class="specialization-tag">AI & ML - IBM  </span>
@@ -705,7 +729,7 @@
                                 <div class="program-name">Bachelor of Business Administration(BBA)</div>
                                 <!-- <div class="program-duration">Undergraduate Degree</div> -->
                             </td>
-                            <td>4 Years</td>
+                            <td>3 Years</td>
                             <td>
                                 <div class="specializations">
                                     <span class="specialization-tag">BBA</span>
@@ -719,7 +743,7 @@
                                 <div class="program-name">Bachelor Of Commerce (B.Com)</div>
                                 
                             </td>
-                            <td>2 Years</td>
+                            <td>3 Years</td>
                             <td>
                                 <div class="specializations">
                                     <span class="specialization-tag">B.COM</span>
@@ -765,7 +789,7 @@
                                 <div class="program-name">Integrated BBA+MBA</div>
                              
                             </td>
-                            <td>4 Years</td>
+                            <td>5 Years</td>
                             <td>
                                 <div class="specializations">
                                     <span class="specialization-tag">BBA+MBA</span>
@@ -957,10 +981,10 @@
                                 <div class="program-name">Bachelor of Science </div>
                                 <!-- <dv class="program-duration">Graduate Degree</dv> -->
                             </td>
-                            <td>2 Years</td>
+                            <td>3 Years</td>
                             <td>
                                 <div class="specializations">
-                                    <span class="specialization-tag">B.Sc(HM)</span>
+                                    <span class="specialization-tag">B.Sc (HM)</span>
                                    
                                 </div>
                             </td>
@@ -1398,7 +1422,7 @@
                                         <div class="program-name">PhD</div>
                                         <!-- <div class="program-duration">Undergraduate Degree</div> -->
                                     </td>
-                                    <td></td>
+                                    <td>5 Years</td>
                                     <td>
                                         <div class="specializations">
                                             <span class="specialization-tag">PhD</span>
@@ -1466,7 +1490,16 @@
                     <div class="footer-column">
                         <h3>Contact Us</h3>
                         <p><i class="fas fa-map-marker-alt"></i> Bhimtal, Nainital, Uttarakhand, India - 263136</p>
-                        <p><i class="fas fa-phone"></i> +91 87006 13932</p>
+                     <p class="phone-block">
+                  <i class="fas fa-phone"></i>
+                  <span>
+                     +91 8700613932<br>
+                     +91 9258119490<br>
+                     +91 8882822265
+                   </span>
+                   </p>
+
+
                         <p><i class="fas fa-envelope"></i> global@mindpoweruniversity.ac.in</p>
                     </div>
                 </div>
@@ -1518,5 +1551,27 @@
             });
         });
     </script>
+
+         <!-- Apply now code  -->
+<script>
+  fetch('apply-button.html')
+    .then(res => res.text())
+    .then(html => {
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      document.body.appendChild(div);
+
+      // Attach click event after button is added to DOM
+      const btn = div.querySelector('#applyNowBtn');
+      if (btn) {
+        btn.addEventListener('click', function () {
+          window.location.href = "https://admissions.mindpoweruniversity.ac.in/";
+        });
+      }
+    })
+    .catch(err => console.error('Apply button load failed:', err));
+</script>
+
+   
 </body>
 </html>
