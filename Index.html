@@ -901,6 +901,26 @@ nav ul li a:hover::after {
             color: #bbb;
             font-size: 14px;
         }
+
+        .phone-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #bbb;
+  margin-bottom: 15px;
+  flex-wrap: wrap; 
+}
+
+.phone-block i {
+  margin-top: 3px; 
+  font-size: 18px;
+  
+}
+
+.phone-block span {
+  line-height: 1.6;
+}
+
         
         /* Animations */
         @keyframes fadeInUp {
@@ -1433,7 +1453,16 @@ nav ul li a:hover::after {
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Bhimtal, Nainital, Uttarakhand, India -  263136</p>
-                    <p><i class="fas fa-phone"></i> +91 8700613932 , +91 9258119490 , +91 8882822265</p>
+                 <p class="phone-block">
+  <i class="fas fa-phone"></i>
+  <span>
+    +91 8700613932<br>
+    +91 9258119490<br>
+    +91 8882822265
+  </span>
+</p>
+
+
                     <p><i class="fas fa-envelope"></i> global@mindpoweruniversity.ac.in</p>
                     <!-- <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 5:00 PM</p> -->
                 </div>

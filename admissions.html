@@ -598,12 +598,6 @@ background-size: cover;
 
 
 
-        /* end here  */
-
-
-
-
-
 
         .cta-section {
             text-align: center;
@@ -650,6 +644,51 @@ background-size: cover;
                 transform: translateY(0);
             }
         }
+
+
+
+        /* pdf section  */
+
+      
+.pdf-download-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.download-btn {
+    background-color: var(--accent-color);
+    color: var(--white);
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.download-btn:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .download-btn {
+        width: 90%;
+        font-size: 15px;
+        padding: 12px 20px;
+    }
+}
+
+
+
+
+
+
+
 
 
          /* Footer Styles */
@@ -758,6 +797,27 @@ background-size: cover;
             margin: 0 auto;
             padding: 0 15px;
         }
+
+        
+        .phone-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #bbb;
+  margin-bottom: 15px;
+  flex-wrap: wrap; 
+}
+
+.phone-block i {
+  margin-top: 3px; 
+  font-size: 18px;
+   
+}
+
+.phone-block span {
+  line-height: 1.6;
+}
+
 
 
 
@@ -977,9 +1037,7 @@ background-size: cover;
               
                     <img src="images/mpu-international-admissionProcess.jpg" alt="admission process">
                
-                <!-- After adding your image, replace above div with:
-                <img src="path-to-your-diagram.jpg" alt="Admission Process Flow Chart">
-                -->
+              
             </section>
 
             <!-- Step-by-Step Process -->
@@ -1161,6 +1219,15 @@ background-size: cover;
         </div>
     </main>
 
+     <!-- PDF download section  -->
+
+     <div class="pdf-download-container">
+    <button class="download-btn" onclick="window.open('/assets/How to Apply.pdf', '_blank')">
+        📄 View Admission Procedure
+    </button>
+     </div>
+
+
    <!-- Footer -->
    <footer>
     <div class="footer-main">
@@ -1204,7 +1271,14 @@ background-size: cover;
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-map-marker-alt"></i> Bhimtal, Nainital, Uttarakhand, India - 263136</p>
-                     <p><i class="fas fa-phone"></i> +91 8700613932 , +91 9258119490 , +91 8882822265</p>
+                  <p class="phone-block">
+                  <i class="fas fa-phone"></i>
+                  <span>
+                  +91 8700613932<br>
+                  +91 9258119490<br>
+                  +91 8882822265
+                 </span>
+                 </p>
                     <p><i class="fas fa-envelope"></i> global@mindpoweruniversity.ac.in</p>
                 </div>
             </div>

@@ -519,114 +519,6 @@
 
 
        
-        /* Footer Styles */
-        /* footer {
-            background-color: var(--dark-color);
-            color: var(--white);
-            padding-top: 60px;
-            margin: 0;
-            width: 100%;
-        }
-
-        .footer-main {
-            width: 100%;
-        }
-
-        .footer-main .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 2px;
-            background-color: var(--secondary-color);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-column p {
-            margin-bottom: 15px;
-            color: #bbb;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #bbb;
-            transition: all 0.3s ease;
-            display: block;
-        }
-        
-        .footer-links a:hover {
-            color: var(--white);
-            padding-left: 5px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-5px);
-        }
-        
-        .footer-bottom {
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 20px 0;
-            text-align: center;
-            color: #bbb;
-            font-size: 14px;
-            width: 100%;
-        }
-
-        .footer-bottom .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
- */
-
 
 
 
@@ -782,6 +674,29 @@ footer {
         font-size: 0.9rem;
     }
 }
+
+
+
+
+        .phone-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #bbb;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.phone-block i {
+  margin-top: 3px; 
+  font-size: 18px;
+   
+}
+
+.phone-block span {
+  line-height: 1.6;
+}
+
 
 
 
@@ -1294,7 +1209,15 @@ footer {
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <p><i class="fas fa-map-marker-alt"></i>Bhimtal, Nainital, Uttarakhand, India -  263136</p>
-                     <p><i class="fas fa-phone"></i> +91 8700613932 , +91 9258119490 , +91 8882822265</p>
+                    <p class="phone-block">
+  <i class="fas fa-phone"></i>
+  <span>
+    +91 8700613932<br>
+    +91 9258119490<br>
+    +91 8882822265
+  </span>
+</p>
+
                     <p><i class="fas fa-envelope"></i> global@mindpoweruniversity.ac.in</p>
                     <!-- <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 5:00 PM</p> -->
                 </div>
